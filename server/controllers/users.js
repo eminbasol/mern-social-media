@@ -34,8 +34,8 @@ export const getUserFriends = async (req, res) => {
         );
         res.status(200).json(formattedFriends);
     } catch (error) {
-
-    } res.status(404).json({ message: error.message });
+        res.status(404).json({ message: error.message });
+    }
 }
 
 // @desc    Update Friend By FriendID

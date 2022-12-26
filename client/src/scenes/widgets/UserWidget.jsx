@@ -128,7 +128,7 @@ const UserWidget = ({ userId, picturePath }) => {
                             <Typography color={medium}>Social Network</Typography>
                         </Box>
                     </FlexBetween>
-                    <EditOutlined sx={{ color: main }} />
+                    {/*<EditOutlined sx={{ color: main }} />*/}
                 </FlexBetween>
 
                 <FlexBetween gap="1rem">
@@ -141,7 +141,7 @@ const UserWidget = ({ userId, picturePath }) => {
                             <Typography color={medium}>Network Platform</Typography>
                         </Box>
                     </FlexBetween>
-                    <EditOutlined sx={{ color: main }} />
+                    {/*<EditOutlined sx={{ color: main }} />*/}
                 </FlexBetween>
             </Box>
         </WidgetWrapper>

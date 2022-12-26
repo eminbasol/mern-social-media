@@ -9,8 +9,9 @@ import PostsWidget from "scenes/widgets/PostsWidget";
 import UserWidget from "scenes/widgets/UserWidget";
 
 const ProfilePage = () => {
-    const [user, setUser] = useState(null);
+    const [profile, setProfile] = useState(null);
     const { userId } = useParams();
+    const user = useSelector((state) => state.user);
     const token = useSelector((state) => state.token);
     const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
 
@@ -20,14 +21,14 @@ const ProfilePage = () => {
             headers: { Authorization: `Bearer ${token}` },
         });
         const data = await response.json();
-        setUser(data);
+        setProfile(data);
     };
 
     useEffect(() => {
         getUser();
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-    if (!user) return null;
+    if (!profile) return null;
 
     return (
         <Box>
@@ -40,7 +41,7 @@ const ProfilePage = () => {
                 justifyContent="center"
             >
                 <Box flexBasis={isNonMobileScreens ? "26%" : undefined}>
-                    <UserWidget userId={userId} picturePath={user.picturePath} />
+                    <UserWidget userId={userId} picturePath={profile.picturePath} />
                     <Box m="2rem 0" />
                     <FriendListWidget userId={userId} />
                 </Box>
@@ -48,8 +49,7 @@ const ProfilePage = () => {
                     flexBasis={isNonMobileScreens ? "42%" : undefined}
                     mt={isNonMobileScreens ? undefined : "2rem"}
                 >
-                    <MyPostWidget picturePath={user.picturePath} />
-                    <Box m="2rem 0" />
+                    {user._id === userId && <MyPostWidget />}
                     <PostsWidget userId={userId} isProfile />
                 </Box>
             </Box>

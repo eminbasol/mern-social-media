@@ -23,7 +23,7 @@ const registerSchema = yup.object().shape({
     password: yup.string().required("*required"),
     location: yup.string().required("*required"),
     occupation: yup.string().required("*required"),
-    picture: yup.string().required("*required"),
+    //picture: yup.string().required("*required"),
 });
 
 const loginSchema = yup.object().shape({
@@ -61,7 +61,8 @@ const Form = () => {
         for (let value in values) {
             formData.append(value, values[value]);
         }
-        formData.append("picturePath", values.picture.name);
+        const defaultUserImage = 'defaultUser.png';
+        formData.append("picturePath", (!values.picture) ? defaultUserImage : values.picture.name);
 
         const savedUserResponse = await fetch(
             "http://localhost:3001/auth/register",

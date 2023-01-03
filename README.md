@@ -69,3 +69,10 @@ Post.insertMany(posts);
 
 The project continues to be developed.
 
+### Screnshots
+
+![screenshot](https://github.com/eminbasol/mern-social-media/blob/main/ss/ss1.png)
+
+![screenshot](https://github.com/eminbasol/mern-social-media/blob/main/ss/ss2.png)
+
+![screenshot](https://github.com/eminbasol/mern-social-media/blob/main/ss/ss3.png)
